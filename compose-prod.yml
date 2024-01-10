@@ -1,0 +1,21 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/production/Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - internal
+    container_name: intranet-nginx-producao
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    networks:
+      - internal
+    container_name: intranet-php-producao
+networks:
+  internal:
+    driver: bridge
