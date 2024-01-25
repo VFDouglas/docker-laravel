@@ -17,6 +17,8 @@ services:
       - internal
     container_name: php-production
   mysql:
+    networks:
+      - internal
     image: 'mysql:latest'
     volumes:
       - ./docker/dbdata:/var/lib/mysql

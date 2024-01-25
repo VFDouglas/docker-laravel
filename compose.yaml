@@ -36,6 +36,13 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_ROOT_PASSWORD: 'root'
     container_name: mysql
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    networks:
+      - internal
+    container_name: redis
 networks:
   internal:
     driver: bridge
