@@ -11,8 +11,8 @@ services:
     volumes:
       - ./:/var/www/html/
       - ./logs/nginx:/var/log/nginx/
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    container_name: nginx
+      - ./nginx/staging/default.conf:/etc/nginx/conf.d/default.conf
+    container_name: nginx_staging
   php:
     build:
       context: .
@@ -22,7 +22,7 @@ services:
     volumes:
       - ./:/var/www/html/
       - ./logs/php.log:/var/log/fpm-php.www.log
-    container_name: php
+    container_name: php_staging
   mysql:
     networks:
       - internal
@@ -35,14 +35,14 @@ services:
       MYSQL_DATABASE: laravel
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_ROOT_PASSWORD: 'root'
-    container_name: mysql
+    container_name: mysql_staging
   redis:
     image: redis:latest
     ports:
       - '6379:6379'
     networks:
       - internal
-    container_name: redis
+    container_name: redis_staging
 networks:
   internal:
     driver: bridge

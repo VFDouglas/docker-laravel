@@ -5,5 +5,3 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN docker-php-ext-install intl ldap zip
 RUN mkdir -p /var/www/html
 COPY . /var/www/html
-WORKDIR /var/www/html
-CMD composer install

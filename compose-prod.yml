@@ -8,14 +8,14 @@ services:
       - "8080:80"
     networks:
       - internal
-    container_name: nginx-production
+    container_name: nginx_production
   php:
     build:
       context: .
       dockerfile: php/production/Dockerfile
     networks:
       - internal
-    container_name: php-production
+    container_name: php_production
   mysql:
     networks:
       - internal
@@ -28,6 +28,14 @@ services:
       MYSQL_DATABASE: laravel
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
       MYSQL_ROOT_PASSWORD: 'root'
+    container_name: mysql_production
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+    networks:
+      - internal
+    container_name: redis_production
 networks:
   internal:
     driver: bridge
