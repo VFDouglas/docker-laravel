@@ -8,14 +8,24 @@ services:
       - "8080:80"
     networks:
       - internal
-    container_name: intranet-nginx-producao
+    container_name: nginx-production
   php:
     build:
       context: .
-      dockerfile: php/Dockerfile
+      dockerfile: php/production/Dockerfile
     networks:
       - internal
-    container_name: intranet-php-producao
+    container_name: php-production
+  mysql:
+    image: 'mysql:latest'
+    volumes:
+      - ./docker/dbdata:/var/lib/mysql
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      MYSQL_ROOT_PASSWORD: 'root'
 networks:
   internal:
     driver: bridge
