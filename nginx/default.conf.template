@@ -18,7 +18,7 @@ server {
 
     # handle .php
     location ~ \.php$ {
-        fastcgi_pass                  php_staging:9000;
+        fastcgi_pass                  $FASTCGI_PASS;
         resolver                      127.0.0.1;
 
         # default fastcgi_params
