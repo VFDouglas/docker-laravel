@@ -11,6 +11,11 @@ Clone a Laravel project or use an existing one.
 ```
 git clone https://github.com/laravel/laravel.git
 ```
+
+Copy the docker-laravel files to your Laravel project
+```
+cp -rf docker-laravel/* laravel/
+```
 Enter the project and run the commands:
 ```
 cd laravel
