@@ -16,10 +16,16 @@ Copy the docker-laravel files to your Laravel project
 ```
 cp -rf docker-laravel/* laravel/
 ```
-Enter the project and run the commands:
+Enter the project:
 ```
 cd laravel
+```
+Create a `.env` file, but only if you're in a new project:
+```
 cp .env.example .env
+```
+Run the commands:
+```
 docker compose up --build -d
 docker compose exec php composer install && php artisan key:generate
 ```
