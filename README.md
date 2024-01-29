@@ -1,25 +1,27 @@
 # docker-laravel
 Laravel example project with Docker, MySQL and Redis
 
-Requirements:
-- Docker
-
 Installation guide:
 
+Clone the project
 ```
-git clone https://github.com/VFDouglas/docker-laravel.git && cd docker-laravel
+git clone https://github.com/VFDouglas/docker-laravel.git
+```
+Clone a Laravel project or use an existing one.
+```
+git clone https://github.com/laravel/laravel.git
+```
+Enter the project and run the commands:
+```
+cd laravel
 cp .env.example .env
 docker compose up --build -d
 docker compose exec php composer install && php artisan key:generate
 ```
+
+You can access the app containers with the command:
+```
+# In this case PHP is the service name specified in the compose.yml file
+docker compose exec php sh
+```
 Access the app in http://localhost:8080.
-
-## How to add Docker to an existint Laravel project
-
-- Copy the directories `nginx` and `docker` and the files `compose.yml` and `compose-prod.yml`
-to the root directory of your Laravel project.
-- Run the commands:
-```
-docker compose up --build -d
-docker compose exec php composer install && php artisan key:generate
-```

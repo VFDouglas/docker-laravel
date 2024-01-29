@@ -3,7 +3,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: nginx/staging/Dockerfile
+      dockerfile: nginx/Dockerfile
     ports:
       - "8080:80"
     networks:
@@ -19,7 +19,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: php/staging/Dockerfile
+      dockerfile: php/Dockerfile
     networks:
       - internal
     volumes:
@@ -35,9 +35,10 @@ services:
     ports:
       - '3306:3306'
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+      MYSQL_USER: ${DB_USERNAME:-root}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-}
     container_name: ${APP_NAME}_mysql_${APP_ENV}
   redis:
     image: redis:latest
