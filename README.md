@@ -28,6 +28,7 @@ Run the commands:
 ```
 docker compose up --build -d
 docker compose exec php composer install && php artisan key:generate
+docker compose exec php npm install && npm run dev
 ```
 
 You can access the app containers with the command:
