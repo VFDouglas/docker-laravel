@@ -19,7 +19,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: php/Dockerfile
+      dockerfile: php/${APP_ENV:-local}/Dockerfile
     networks:
       - internal
     volumes:
@@ -36,9 +36,9 @@ services:
       - '3306:3306'
     environment:
       MYSQL_DATABASE: ${DB_DATABASE:-laravel}
-      MYSQL_USER: ${DB_USERNAME:-root}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
       MYSQL_PASSWORD: ${DB_PASSWORD:-}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     container_name: ${APP_NAME}_mysql_${APP_ENV}
   redis:
     image: redis:latest
