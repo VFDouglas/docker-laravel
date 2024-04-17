@@ -26,6 +26,8 @@ services:
     volumes:
       - ./:/var/www/html/
       - ./logs/php.log:/var/log/fpm-php.www.log
+    ports:
+      - '5173:5173' # Vite port
     container_name: ${APP_NAME}_php_${APP_ENV}
   mysql:
     networks:
