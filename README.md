@@ -30,6 +30,10 @@ docker compose up --build -d
 docker compose exec php composer install && php artisan key:generate
 docker compose exec php npm install && npm run dev
 ```
+Go to the `.env` file and rename the variable *DB_HOST*:
+```
+DB_HOST=mysql
+```
 
 You can access the app containers with the command:
 ```
