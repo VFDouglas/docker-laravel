@@ -35,6 +35,24 @@ Go to the `.env` file and rename the variable *DB_HOST*:
 DB_HOST=mysql
 ```
 
+Add the *server* block to the `vite.config.js` file, so it would look like this:
+```
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: ['resources/css/app.css', 'resources/js/app.js'],
+            refresh: true,
+        }),
+    ],
+    server : {
+        host: '0.0.0.0',
+        hmr : {
+            host: 'localhost'
+        }
+    }
+});
+```
+
 You can access the app containers with the command:
 ```
 # In this case PHP is the service name specified in the compose.yml file
