@@ -26,7 +26,8 @@ cp .env.example .env
 ```
 Run the commands:
 ```
-docker compose up --build -d
+docker compose build php --build-arg UID=$UID --no-cache
+docker compose up -d
 docker compose exec php composer install && php artisan key:generate
 docker compose exec php npm install && npm run dev
 ```
