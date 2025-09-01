@@ -20,7 +20,9 @@ services:
   php:
     build:
       context: .
-      dockerfile: php/${APP_ENV:-local}/Dockerfile
+      dockerfile: php/Dockerfile
+      args:
+        DOCKERFILE_DIRECTORY: ${APP_ENV:-local}
     networks:
       - internal
     volumes:
